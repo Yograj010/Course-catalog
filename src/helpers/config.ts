@@ -11,7 +11,7 @@ if(process.env.STAGE === "dev"){
 }
 
 export const config = {
-    mongoURI: process.env.MONGO_URI || "mongodb://localhost:27017",
+    mongoURI: process.env.MONGODB_URI || "mongodb://localhost:27017/course-catalog",
     mongoConnOptions,
-    serverPort: process.env.PORT || "3000",
+    serverPort: process.env.PORT || 3000,
 }
