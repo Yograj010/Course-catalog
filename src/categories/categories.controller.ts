@@ -7,13 +7,15 @@ import { QueryCategoryDto } from './dto/query-category.dto';
 @Controller('categories')
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
-
+  
+  //function to create a category
   @Post()
   async create(@Body() dto: CreateCategoryDto) {
     const category = await this.categoriesService.create(dto);
     return { success: true, data: category };
   }
 
+  //function to search a category using filters
   @Get()
   async findAll(@Query() query: QueryCategoryDto) {
     return this.categoriesService.findAll(query);
@@ -25,12 +27,14 @@ export class CategoriesController {
     return { success: true, data };
   }
 
+  //function to search category by id
   @Get(':id')
   async findOne(@Param('id') id: string) {
     const category = await this.categoriesService.findOne(id);
     return { success: true, data: category };
   }
 
+  //function to update a category by id
   @Patch(':id')
   async update(
     @Param('id') id: string,
@@ -40,6 +44,7 @@ export class CategoriesController {
     return { success: true, data: category };
   }
 
+  //function to delete a category by id
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id') id: string) {

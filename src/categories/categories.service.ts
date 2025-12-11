@@ -8,16 +8,18 @@ import { QueryCategoryDto } from './dto/query-category.dto';
 
 @Injectable()
 export class CategoriesService {
-      constructor(
+  constructor(
     @InjectModel(Category.name)
     private readonly categoryModel: Model<CategoryDocument>,
   ) {}
 
+  //service to create category 
   async create(dto: CreateCategoryDto): Promise<Category> {
     const created = new this.categoryModel(dto);
     return created.save();
   }
 
+  //service to find cateogry by filters
   async findAll(query: QueryCategoryDto) {
     const {
       page = 1,
@@ -52,6 +54,7 @@ export class CategoriesService {
     };
   }
 
+  //service to find a category by id
   async findOne(id: string): Promise<Category> {
     const category = await this.categoryModel
       .findOne({ _id: id, isDeleted: false })
@@ -62,6 +65,7 @@ export class CategoriesService {
     return category;
   }
 
+  //service to update a category by id
   async update(id: string, dto: UpdateCategoryDto): Promise<Category> {
     const updated = await this.categoryModel
       .findOneAndUpdate({ _id: id, isDeleted: false }, dto, {
@@ -74,6 +78,7 @@ export class CategoriesService {
     return updated;
   }
 
+  //service to soft-delete a category by id
   async softDelete(id: string): Promise<void> {
     const res = await this.categoryModel
       .findOneAndUpdate({ _id: id, isDeleted: false }, { isDeleted: true })
