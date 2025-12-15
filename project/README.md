@@ -1,9 +1,15 @@
 # Course-catalog
-The Nest Course Management System (NCMS) is a backend application built using NestJS, MongoDB (Mongoose), and TypeScript, designed to manage an organized structure of Categories, SubCategories, and Courses.
+The Course catalog is a backend application built using NestJS, MongoDB (Mongoose), and TypeScript, designed to manage an organized structure of Categories, SubCategories, and Courses.
 
 # API (Category / SubCategory / Course)
 
-Simple project for learning NestJS + MongoDB (Mongoose).
+- **Category**: Top level (e.g. Programming, Design).
+- **SubCategory**: Always linked to single Category  
+  (e.g. JavaScript -> Programming).
+- **Course**:
+  - Can be linked with Multiple Categories
+  - Can be linked with Multiple SubCategories
+  - Selected SubCategories must be from the Categories which are given in the Course
 
 ## Features
 
@@ -58,16 +64,29 @@ By default it runs on `http://localhost:3000`.
 ### Categories
 
 - `POST /categories` - create
+  - Body:
+    - `name`
+    - `description` (optional)
 - `GET /categories` - list (pagination, search)
+  - Query:
+    - `page`, `limit`
+    - `sortBy`, `sortOrder`
+    - `search` (filter)
 - `GET /categories/with-subcategory-count` - aggregation
 - `GET /categories/:id` - detail
 - `PATCH /categories/:id` - update
+  - Body:
+    - `name` (optional)
+    - `description` (optional)
 - `DELETE /categories/:id` - soft delete
 
 ### SubCategories
 
 - `POST /subcategories`
-  - Requires `categoryId` (must be a valid Category)
+  - Body:
+    - `name`
+    - `categoryId` (required - must be a valid Category)
+    - `description` (optional)
 - `GET /subcategories`
   - Query:
     - `page`, `limit`
@@ -76,6 +95,10 @@ By default it runs on `http://localhost:3000`.
     - `categoryId` (filter)
 - `GET /subcategories/:id`
 - `PATCH /subcategories/:id`
+  - Body:
+    - `name` (optional)
+    - `categoryId` (optional)
+    - `description` (optional)
 - `DELETE /subcategories/:id`
 
 ### Courses
@@ -91,23 +114,12 @@ By default it runs on `http://localhost:3000`.
     - All `subCategoryIds` must exist and not be soft-deleted
     - **Each SubCategory must belong to one of the given Categories**
 - `GET /courses` (supports page, limit, sort, search, `categoryId`, `subCategoryId`)
+  - Query:
+      - `page`, `limit`
+      - `sort`, `sortOrder`
+      - `search`
+      - `categoryId` (filter)
+      - `subCategoryId` (filter)
 - `GET /courses/:id`
 - `PATCH /courses/:id`
 - `DELETE /courses/:id`
-
----
-
-## Relation explanation (Hinglish)
-
-- **Category**: Top level (e.g. Programming, Design).
-- **SubCategory**: Hamesha ek Category se link hoti hai  
-  (e.g. JavaScript -> Programming).
-- **Course**:
-  - Multiple Categories se link ho sakta hai
-  - Multiple SubCategories se link ho sakta hai
-  - Jo SubCategories select karo, wo unhi Categories me honi chahiye
-    jo Course me di hui hain.
-
-Is project ka code simple rakha gaya hai taaki tum NestJS project structure
-easily samjha sako (modules, services, controllers, DTOs, schemas, etc.).
-
