@@ -46,8 +46,9 @@ export class CategoriesController {
 
   //function to delete a category by id
   @Delete(':id')
-  @HttpCode(HttpStatus.NO_CONTENT)
+  // @HttpCode(HttpStatus.NO_CONTENT)
   async remove(@Param('id') id: string) {
     await this.categoriesService.softDelete(id);
+    return { success: true, message: "Category deleted successfully"}
   }
 }

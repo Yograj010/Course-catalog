@@ -40,8 +40,9 @@ export class SubcategoriesController {
 
     //function to delete a subCategory by id
     @Delete(':id')
-    @HttpCode(HttpStatus.NO_CONTENT)
+    // @HttpCode(HttpStatus.NO_CONTENT)
     async remove(@Param('id') id: string) {
         await this.subCategoriesService.softDelete(id);
+        return { success: true, message: "subCategory deleted successfully"}
     }
 }
