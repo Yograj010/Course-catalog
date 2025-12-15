@@ -1,0 +1,426 @@
+{
+	"info": {
+		"_postman_id": "6454419f-1178-469e-9c79-5a1f506f92b7",
+		"name": "Course-catalog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18448008"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "create cat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"English speaking\",\n  \"description\": \"A program to learn and speak english\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all cat with filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories?page=1&limit=10&sortBy=name&sortOrder=asc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "prog",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "name"
+								},
+								{
+									"key": "sortOrder",
+									"value": "asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cat & sub-cat with count",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/with-subcategory-count",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"with-subcategory-count"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get cat by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/693ced060fcc0b34481d360c",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"693ced060fcc0b34481d360c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update cat by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n//   \"name\": \"Updated Category\",\n    // \"description\": \"A program where you can learn how to live a healthy lifestyle.\",\n    \"description\": \"A program where you can learn how to become a good programmer.\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/categories/693ced060fcc0b34481d360c",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"693ced060fcc0b34481d360c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "del cat by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/categories/693cee4c0fcc0b34481d3612",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"categories",
+								"693cee4c0fcc0b34481d3612"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "SubCategories",
+			"item": [
+				{
+					"name": "create subCat",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\n//   \"name\": \"Nodejs\",\n//   \"categoryId\": \"693ced060fcc0b34481d360c\",\n//   \"description\": \"This course teaches you all about Nodejs from the beginner's level to advance level\"\n// },\n{\n  \"name\": \"JavaScript\",\n  \"categoryId\": \"693ced060fcc0b34481d360c\",\n  \"description\": \"This course teaches you all about Javascript from the beginner's level to advance level\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subcategories",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subcategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all subCat with filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subcategories?page=1&limit=10",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subcategories"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "js",
+									"disabled": true
+								},
+								{
+									"key": "categoryId",
+									"value": "67abcd1234ef56789c01aa22",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get sub cat by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subcategories/693d1e6beaad76e3de628677",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subcategories",
+								"693d1e6beaad76e3de628677"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update subCat by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"JS\"\n//   \"categoryId\": \"693a4e6e13ac8a64c05434c2\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/subcategories/693d1e6beaad76e3de628677",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subcategories",
+								"693d1e6beaad76e3de628677"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "del subCat by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/subcategories/693d1e6beaad76e3de628677",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"subcategories",
+								"693d1e6beaad76e3de628677"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Create course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"MERN Stack Bootcamp\",\n  \"description\": \"Full stack course\",\n  \"categoryIds\": [\"693ced1a0fcc0b34481d360e\", \"693ced060fcc0b34481d360c\"],\n  \"subCategoryIds\": [\"693d1e6beaad76e3de628677\", \"693d1b4ceaad76e3de628671\"]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/courses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all courses with filter",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/courses?page=1&limit=10&search=mern&categoryId=67abcd1234ef56789c01aa22&subCategoryId=67abcd5555ef33333c77dd88",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "10"
+								},
+								{
+									"key": "search",
+									"value": "mern"
+								},
+								{
+									"key": "categoryId",
+									"value": "67abcd1234ef56789c01aa22"
+								},
+								{
+									"key": "subCategoryId",
+									"value": "67abcd5555ef33333c77dd88"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get courses by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/courses/67abcd1234ef56789c01aa22",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses",
+								"67abcd1234ef56789c01aa22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update courses by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Updated MERN Course\",\n  \"categoryIds\": [\"67abcd1234ef56789c01aa22\"],\n  \"subCategoryIds\": [\"67abcd5555ef33333c77dd88\"]\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/courses/67abcd1234ef56789c01aa22",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses",
+								"67abcd1234ef56789c01aa22"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "soft delete course by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/courses/67abcd1234ef56789c01aa22",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses",
+								"67abcd1234ef56789c01aa22"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
