@@ -41,7 +41,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/categories?page=1&limit=10&sortBy=name&sortOrder=asc",
+							"raw": "{{baseUrl}}/categories?page=1&limit=10&sortBy=name&sortOrder=asc&search=prog",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -58,17 +58,16 @@
 									"value": "10"
 								},
 								{
-									"key": "search",
-									"value": "prog",
-									"disabled": true
-								},
-								{
 									"key": "sortBy",
 									"value": "name"
 								},
 								{
 									"key": "sortOrder",
 									"value": "asc"
+								},
+								{
+									"key": "search",
+									"value": "prog"
 								}
 							]
 						}
@@ -193,7 +192,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/subcategories?page=1&limit=10",
+							"raw": "{{baseUrl}}/subcategories?page=1&limit=10&sortOrder=asc&search=java&categoryId=67abcd1234ef56789c01aa22",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -210,14 +209,21 @@
 									"value": "10"
 								},
 								{
-									"key": "search",
-									"value": "js",
+									"key": "sortBy",
+									"value": "name",
 									"disabled": true
 								},
 								{
+									"key": "sortOrder",
+									"value": "asc"
+								},
+								{
+									"key": "search",
+									"value": "java"
+								},
+								{
 									"key": "categoryId",
-									"value": "67abcd1234ef56789c01aa22",
-									"disabled": true
+									"value": "67abcd1234ef56789c01aa22"
 								}
 							]
 						}
@@ -324,7 +330,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/courses?page=1&limit=10&search=mern&categoryId=67abcd1234ef56789c01aa22&subCategoryId=67abcd5555ef33333c77dd88",
+							"raw": "{{baseUrl}}/courses?page=1&limit=10&sortOrder=asc&search=mern&categoryId=67abcd1234ef56789c01aa22&subCategoryId=67abcd5555ef33333c77dd88",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -339,6 +345,15 @@
 								{
 									"key": "limit",
 									"value": "10"
+								},
+								{
+									"key": "sortBy",
+									"value": "title",
+									"disabled": true
+								},
+								{
+									"key": "sortOrder",
+									"value": "asc"
 								},
 								{
 									"key": "search",

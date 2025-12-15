@@ -69,8 +69,10 @@ By default it runs on `http://localhost:3000`.
     - `description` (optional)
 - `GET /categories` - list (pagination, search)
   - Query:
-    - `page`, `limit`
-    - `sortBy`, `sortOrder`
+    - `page` (optional)
+    - `limit` (optional)
+    - `sortBy` (optional)
+    - `sortOrder` (optional)
     - `search` (filter)
 - `GET /categories/with-subcategory-count` - aggregation
 - `GET /categories/:id` - detail
@@ -89,10 +91,12 @@ By default it runs on `http://localhost:3000`.
     - `description` (optional)
 - `GET /subcategories`
   - Query:
-    - `page`, `limit`
-    - `sortBy`, `sortOrder`
-    - `search`
-    - `categoryId` (filter)
+    - `page` (optional)
+    - `limit` (optional)
+    - `sortBy` (optional)
+    - `sortOrder` (optional)
+    - `search` (optional)
+    - `categoryId` (optional - filter)
 - `GET /subcategories/:id`
 - `PATCH /subcategories/:id`
   - Body:
@@ -115,11 +119,13 @@ By default it runs on `http://localhost:3000`.
     - **Each SubCategory must belong to one of the given Categories**
 - `GET /courses` (supports page, limit, sort, search, `categoryId`, `subCategoryId`)
   - Query:
-      - `page`, `limit`
-      - `sort`, `sortOrder`
-      - `search`
-      - `categoryId` (filter)
-      - `subCategoryId` (filter)
+    - `page` (optional)
+    - `limit` (optional)
+    - `sortBy` (optional)
+    - `sortOrder` (optional)
+    - `search` (optional)
+    - `categoryId` (optional - filter)
+    - `subCategoryId` (optional - filter)
 - `GET /courses/:id`
 - `PATCH /courses/:id`
 - `DELETE /courses/:id`
